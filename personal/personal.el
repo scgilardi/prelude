@@ -50,6 +50,3 @@
 (use-package yasnippet-snippets
   :ensure t
   :after (yasnippet))
-
-(/ 1 0)
-(message "loaded personal.el")
