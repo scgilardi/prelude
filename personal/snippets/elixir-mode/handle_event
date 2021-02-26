@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: handle-event
+# key: handle-event
+# --
+def handle_event("suggest", %{"prefix" => prefix}, socket) do
+matches = Cities.suggest(prefix)
+
+socket =
+assign(socket,
+matches: matches
+)
+
+{:noreply, socket}
+end

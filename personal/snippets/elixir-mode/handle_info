@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: handle-info
+# key: handle-info
+# --
+def handle_info({:run_zip_search, zip}, socket) do
+case Stores.search_by_zip(zip) do
+[] ->
+socket =
+socket
+|> put_flash(:info, "No stores matching \\"#{zip}\\"")
+|> assign(stores: [], loading: false)
+
+{:noreply, socket}
+
+stores ->
+socket = assign(socket, stores: stores, loading: false)
+{:noreply, socket}
+end
+end
